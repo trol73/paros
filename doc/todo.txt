@@ -1,0 +1,37 @@
+.	NTLM does not work.
+
+
+. can't clear the history window by right clicking in it and selecting clear
+. in general, like to be able to specify what history lines get saved in the log.
+  Many times I have a very specific set of actions I want to examine. It seems that
+  clearing the history and deleting nodes has no effect on what's in the log file,
+  just what shows up in the UI. That means I have to browse, click etc.
+  to the page and situation I want, change the web browser settings, 
+  hope they take effect immediately, start up Paros, set filters and options and continue. I would like to delete nodes and history and have that control what is in the log also. Then I can just leave Paros running and visually specify what I want in the log, instead of remembering every startup,config and filter action needed to get what I want.
+. file menu - dropdown menu items disappear when you mouse over them, moving right back up to top File menu item brings them back and you can then mouse down the dropdown list to the menu item you want.
+
+
+.	better kb support
+	-	web server fingerprinting
+	-	app server fingerprinting
+.	plugin/filter parameter saving
+.	Rewrite extension to load from dir.	
+.	auto load extension
+.	brute force password
+
+.	OWASP XSS cheat sheet
+.	session fixation
+.	URL versus POST versus mixed POST/GET forms. PHP applications are at
+risk from faulty GPC global behavior (which apps often put back to replicate
+PHP 3's faulty register globals). I'd like to have a test which pops up a
+warning if the GPC handling is not good.
+
+.	For example, if there's a post form, the entries in GET should be
+overridden, and COOKIES should be used last.
+
+.	do its parameter tampering and
+so on for cookies as well. Most apps are not robust in the face of
+significant cookie tampering. But for this to work, the session ID cookie
+needs to be marked and not played with.
+
+.	cookie analysis

@@ -1,0 +1,5 @@
+- i18n
+- hex dump viewer
+- in linux settings stored onto ~/.paros' instead of ~/paros dir
+- code refactoring and optimizations
+- added 'copy link to clipboard' in log area popup menu

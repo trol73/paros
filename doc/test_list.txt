@@ -1,0 +1,51 @@
+00001 Directory browsing
+00002 Obsolete file
+00003 private_ip_disclosure
+00004 session_id_url_rewrite
+00005 Obsolete file extended check
+00006 Potential Path Manipulation
+
+
+10000 n/a
+10001 browser_autocomplete
+10002 browser_cache
+
+20000 IIS default files
+20001 coldfusion_default_file
+20002 jrun_default_file
+20003 tomcat_default_file
+20004 weblogic_default_file
+20005 websphere_default_file
+20006 domino_default_file
+
+30000 external redirect
+
+40000 sql_injection_fingerprint
+40001 crlf_injection
+40002 server side include
+40003 cross_site_script
+40004 cross_site_script_no_bracket
+40005 cross_site_script_in_script_section
+
+40010 param_tampering
+
+
+40030 sql_injection
+40031 sql_injection_mssql_enumeration
+40032 sql_injection_oracle_enumeration
+
+
+Filter list
+10	IfModifiedSince
+20	Log GET
+30	Log Post
+40	Log request response
+50	replace request header
+60	replace request body
+70	replace response header
+80	replace response body
+90	detect malicious content
+100	log cookie in request
+110 detect cookie in response
+120 change user agent
+

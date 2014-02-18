@@ -1,0 +1,93 @@
+<project name="parosng" default="dist" basedir=".">
+	<description>
+		Build paros
+	</description>
+	
+	<!-- set global properties for this build -->
+	<property name="src" location="src"/>
+	<property name="lib" location="lib"/>
+	<property name="xml" location="xml"/>
+	<property name="root" location="."/>
+	<property name="build" location="build"/>
+	<property name="dist"  location="dist"/>
+
+	<target name="init">
+		<!-- Create the time stamp -->
+		<tstamp/>
+		<!-- Create the build directory structure used by compile -->
+		<delete dir="${dist}" includeEmptyDirs="true"/>
+		<delete dir="${build}" includeEmptyDirs="true"/>
+
+		<mkdir dir="${build}"/>
+	</target>
+
+	<target name="compile" depends="init" description="compile the source " >
+		<javac srcdir="${src}" destdir="${build}" debug="true">
+			<classpath>
+				<pathelement location="${lib}/commons-codec-1.5.jar"/>
+				<pathelement location="${lib}/commons-collections-3.2.1.jar"/>
+				<pathelement location="${lib}/commons-configuration-1.6.jar"/>
+				<pathelement location="${lib}/commons-httpclient-3.0.jar"/>			<!-- need update -->
+				<pathelement location="${lib}/commons-lang-2.6.jar"/>
+				<pathelement location="${lib}/commons-logging-1.1.1.jar"/>
+				<pathelement location="${lib}/hsqldb.jar"/>								<!-- need update -->
+				<pathelement location="${lib}/jdic.jar"/>									<!-- need update -->
+				<pathelement location="${lib}/log4j-1.2.16.jar"/>
+			</classpath>
+		</javac>
+	</target>
+
+	
+	<target name="dist" depends="compile" description="generate the distribution" >
+		<mkdir dir="${dist}"/>
+		
+		<unjar dest="${build}">
+			<fileset dir="${lib}" includes="**"/>
+		</unjar>
+		
+		<copy todir="${build}/resource">
+			<fileset dir="${root}/resource" excludes="*.psd"/>
+		</copy>
+		<copy file="${xml}/log4j.properties" tofile="${build}/xml/log4j.properties"/> 
+		<copy todir="${dist}/xml">
+			<fileset dir="${xml}"/>
+		</copy>
+		<copy todir="${dist}/db">
+			<fileset dir="${root}/db"/>
+		</copy>
+		<copy todir="${dist}/filter">
+			<fileset dir="${root}/filter"/>
+		</copy>
+		<copy todir="${dist}/plugin">
+			<fileset dir="${root}/plugin"/>
+		</copy>
+		<copy todir="${dist}/session">
+			<fileset dir="${root}/session"/>
+		</copy>
+		<copy todir="${dist}/license">
+			<fileset dir="${root}/license"/>
+		</copy>
+		<copy todir="${dist}/log">
+			<fileset dir="${root}/log"/>
+		</copy>
+		<copy todir="${dist}">
+			<fileset dir="${root}/bin" includes="*.exe *.so *.dll mozembed* *.bat *.sh"/>
+		</copy>
+		
+		<copy todir="${dist}">
+			<fileset dir="${root}/i18n" includes="*.properties"/>
+		</copy>
+
+
+		<copy file="${root}/doc/release.txt" todir="${dist}"/>
+
+		<copy file="${root}/resource/paros_logo.ico" todir="${dist}"/>
+
+		<!-- Put everything in ${build} into the MyProject-${DSTAMP}.jar file -->
+		<jar jarfile="${dist}/paros.jar" basedir="${build}" update="true" manifest="MainClass.txt" compress="true"/>
+		
+		<delete dir="${build}" />
+	</target>
+
+
+</project>
